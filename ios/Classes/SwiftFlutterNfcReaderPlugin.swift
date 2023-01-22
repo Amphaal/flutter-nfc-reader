@@ -102,7 +102,7 @@ extension SwiftFlutterNfcReaderPlugin : NFCNDEFReaderSessionDelegate {
         
         let parsedPayload = VYNFCNDEFPayloadParser.parse(payload)
         var text = ""
-        var urlString = ""
+        // var urlString = ""
         
         if let parsedPayload = parsedPayload as? VYNFCNDEFTextPayload {
             // text = "[Text payload]\n"
@@ -110,7 +110,7 @@ extension SwiftFlutterNfcReaderPlugin : NFCNDEFReaderSessionDelegate {
         } else if let parsedPayload = parsedPayload as? VYNFCNDEFURIPayload {
             // text = "[URI payload]\n"
             text = String(format: "%@%@", text, parsedPayload.uriString)
-            urlString = parsedPayload.uriString
+            // urlString = parsedPayload.uriString
         } else if let parsedPayload = parsedPayload as? VYNFCNDEFTextXVCardPayload {
             // text = "[TextXVCard payload]\n"
             text = String(format: "%@%@", text, parsedPayload.text)
@@ -122,7 +122,7 @@ extension SwiftFlutterNfcReaderPlugin : NFCNDEFReaderSessionDelegate {
                 }
             }
             text = String(format: "%@%@", text, sp.payloadURI.uriString)
-            urlString = sp.payloadURI.uriString
+            // urlString = sp.payloadURI.uriString
         } else if let wifi = parsedPayload as? VYNFCNDEFWifiSimpleConfigPayload {
             for case let credential as VYNFCNDEFWifiSimpleConfigCredential in wifi.credentials {
                 text = String(format: "%@SSID: %@\nPassword: %@\nMac Address: %@\nAuth Type: %@\nEncrypt Type: %@",
